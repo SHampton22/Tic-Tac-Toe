@@ -1,0 +1,85 @@
+
+/* use .class-name for CSS */
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+body {
+    display: flex;
+    justify-content: space-between;
+    min-height: 100vh;
+    
+}
+
+.left-section, .right-section {
+    align-items: center;
+    background-color: gold;
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    font-weight: bolder;
+    width: 25%;
+}
+
+.middle-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.whos-turn {
+    font-size: xx-large;
+}
+
+.game-board {
+    height: 450px;
+    width: 450px;
+}
+
+button {
+    height: 148px;
+    width: 145px;
+    background-color: transparent;
+    border-color: black;
+    border-style: solid;
+    border-width: medium;
+}
+
+.top-left-button {
+    border-top: none;
+    border-left: none;
+}
+
+.top-center-button {
+    border-top: none;
+}
+
+.top-right-button {
+    border-top: none;
+    border-right: none;
+}
+
+.middle-left-button {
+    border-left: none;
+}
+
+.middle-right-button {
+    border-right: none;
+}
+
+.bottom-left-button {
+    border-left: none;
+    border-bottom: none;
+}
+
+.bottom-center-button {
+    border-bottom: none;
+}
+
+.bottom-right-button {
+    border-bottom: none;
+    border-right: none;
+}
