@@ -13,3 +13,4 @@ var middleRightButton = document.querySelector('#middleRightButton');
 var bottomLeftButton = document.querySelector('#bottomLeftButton');
 var bottomCenterButton = document.querySelector('#bottomCenterButton');
 var bottomRightButton = document.querySelector('#bottomRightButton');
+
