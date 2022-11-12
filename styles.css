@@ -25,6 +25,7 @@ body {
     width: 25%;
 }
 
+
 .left-player::after {
     content: "\1F646";
     font-size: 100px;
@@ -57,7 +58,6 @@ button {
     border-color: black;
     border-style: solid;
     border-width: medium;
-    
 }
 
 .top-left-button {
