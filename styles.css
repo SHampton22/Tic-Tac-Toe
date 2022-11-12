@@ -19,9 +19,21 @@ body {
     background-color: gold;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     font-size: x-large;
     font-weight: bolder;
     width: 25%;
+}
+
+
+.left-player::after {
+    content: "\1F646";
+    font-size: 100px;
+}
+
+.right-player::after {
+    content: "\1F645";
+    font-size: 100px;
 }
 
 .middle-section {
@@ -53,7 +65,7 @@ button {
     border-left: none;
 }
 
-.top-middle-button {
+.top-center-button {
     border-top: none;
 }
 
@@ -75,7 +87,7 @@ button {
     border-bottom: none;
 }
 
-.bottom-middle-button {
+.bottom-center-button {
     border-bottom: none;
 }
 
