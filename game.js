@@ -3,7 +3,6 @@ class Game {
         this.leftPlayer = new Player('O', 0x1F646);
         this.rightPlayer = new Player('X', 0x1F645);
         this.currentPlayer = this.leftPlayer;
-        this.turnsPlayed = 0;
         this.tie = false;
         this.board = [
             0,1,2,
@@ -13,65 +12,45 @@ class Game {
         this.winPositions = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
     }
 
+    checkForWins() {
+        for (var i = 0; i < this.winPositions.length; i++) {
+            if (this.currentPlayer.positions.includes(this.winPositions[i][0]) && 
+                this.currentPlayer.positions.includes(this.winPositions[i][1]) &&
+                this.currentPlayer.positions.includes(this.winPositions[i][2])) {
+                this.currentPlayer.increaseWins();
+                this.resetBoard();
+            } 
+        }       
+    }
+
     resetBoard() {
+        this.leftPlayer.positions = [];
+        this.rightPlayer.positions = [];
+        this.tie = false;
         this.board = [
             0,1,2,
             3,4,5,
             6,7,8,
         ];
-        this.tie = false;
-        this.turnsPlayed = 0;
     }
 
-    updateCurrentPlayer(player) {
-        this.currentPlayer = player;
-        // this.leftPlayer or this.rightPlayer
-    }
-
-    updateTurnsPlayed() {
-        this.turnsPlayed++;
-    }
-
-    checkForTie() {
-        if (this.turnsPlayed === 9) {
-            this.tie = true;
-            resetBoard();
-            return 'TIE GAME!';
+    updateCurrentPlayer() {
+        if (this.currentPlayer === this.leftPlayer) {
+            this.currentPlayer = this.rightPlayer;
+        } else {
+            this.currentPlayer = this.leftPlayer;
         }
     }
 
-    checkForWins() {
-        // if X or O is in win positions
-        // update
+    checkForTie() {
+        if (this.currentPlayer.positions.length === 5) {
+            this.tie = true;
+            this.resetBoard();
+        } 
     }
 
-
-
-
-    
+    choosePosition(indexNumber) {
+        this.board.splice(indexNumber, 1, "")
+        this.currentPlayer.positions.push(indexNumber);
+    }
 }
-
-
-// new instance of game
-// left player defaults to start game
-// player selects position-store position
-// update current game board
-// this.board[i] = X or O
-// compare current game board to winPositions-function
-// switch player-function to reassign this.currentPlayer
-// player selects position-store position
-// update current game board
-// compare current game board to winPositions-function
-// if win happens:
-// check to see if X or O has won, update players win count.
-
-
-// invoke function to switch player-update turn banner
-// click button, track click, only allow click on "empty" button
-
-// switch player-
-// click button, on 5th click check for wins
-// continue to switch players and check for wins until 9 plays have happened, tie
-// if win happens:
-// check to see if X or O has won, update players win count.
-// once win or tie happen, display message and reset the board.
