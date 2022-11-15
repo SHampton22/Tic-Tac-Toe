@@ -19,7 +19,6 @@ class Game {
                 this.currentPlayer.positions.includes(this.winPositions[i][2])) {
                 this.currentPlayer.increaseWins();
                 this.resetBoard();
-                console.log('WINNER!', this.currentPlayer);
                 return 'WINNER';
             } 
         }       
@@ -48,7 +47,6 @@ class Game {
         if (this.currentPlayer.positions.length === 5) {
             this.tie = true;
             this.resetBoard();
-            console.log('TIE!')
             return 'TIE';
         } 
     }

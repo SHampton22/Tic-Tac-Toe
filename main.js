@@ -1,4 +1,3 @@
-
 var leftPlayer = document.getElementById('leftPlayer');
 var leftPlayerWinCount = document.getElementById('leftPlayerWinCount');
 var turnIndicator = document.getElementById('turnIndicator');
@@ -15,12 +14,37 @@ addEventListener('load', startGame)
 board.addEventListener('click', function(event) {
     var buttonId = event.target.id
     takeTurn(buttonId);
-    endGame();
-    game.checkForWins();
-    displayWins();
-    game.checkForTie();
-    game.updateCurrentPlayer();
 })
+
+function startGame() {
+    turnIndicator.innerText = `It's ${game.currentPlayer.token}'s turn`;
+}
+
+function takeTurn(elementId) {
+    game.choosePosition(event.target.id * 1);
+    var selectedButton = document.getElementById(elementId);
+    if (selectedButton.innerText === "") {
+        selectedButton.innerText = game.currentPlayer.token;
+        displayPlayerTurn();
+        endGame()
+        game.updateCurrentPlayer();
+    }
+}
+
+function endGame() {
+    if (game.checkForWins() === 'WINNER') {
+        turnIndicator.innerText = `${game.currentPlayer.token} WON!`;
+        disableBoard('add');
+        displayWins();
+        timer();
+        
+    } else if (game.checkForTie() === 'TIE') {
+        turnIndicator.innerText = 'TIE GAME!';
+        disableBoard('add');
+        displayWins();
+        timer();
+    }
+}
 
 function displayWins() {
     leftPlayerWinCount.innerText = `${game.leftPlayer.wins} Wins`;
@@ -35,31 +59,20 @@ function displayPlayerTurn() {
     }
 }
 
-function takeTurn(elementId) {
-    game.choosePosition(event.target.id * 1);
-    var selectedButton = document.getElementById(elementId);
-    if (selectedButton.innerText === "") {
-        selectedButton.innerText = game.currentPlayer.token;
-        displayPlayerTurn();
-    }
-}
-
-function endGame() {
-    if (game.checkForWins() === 'WINNER') {
-        turnIndicator.innerText = `${game.currentPlayer.token} WON!`;
-        clearBoard();
-    } else if (game.checkForTie() === 'TIE') {
-        turnIndicator.innerText = 'TIE GAME!';
-        clearBoard();
-    }
-}
-
 function clearBoard() {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].innerText = "";
+        disableBoard('remove');
     } 
 }
 
-function startGame() {
-    turnIndicator.innerText = `It's ${game.currentPlayer.token}'s turn`;
+function timer() {
+    setTimeout(function() {
+        clearBoard();
+        startGame()
+    }, 4000);
+}
+
+function disableBoard(param) {
+    board.classList[param]('disable');
 }
