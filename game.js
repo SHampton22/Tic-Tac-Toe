@@ -1,7 +1,7 @@
 class Game {
     constructor() { 
-        this.leftPlayer = new Player('O', 0x1F646);
-        this.rightPlayer = new Player('X', 0x1F645);
+        this.leftPlayer = new Player('O', '🙆');
+        this.rightPlayer = new Player('X', '🙅');
         this.currentPlayer = this.leftPlayer;
         this.tie = false;
         this.board = [
@@ -19,6 +19,8 @@ class Game {
                 this.currentPlayer.positions.includes(this.winPositions[i][2])) {
                 this.currentPlayer.increaseWins();
                 this.resetBoard();
+                console.log('WINNER!', this.currentPlayer);
+                return 'WINNER';
             } 
         }       
     }
@@ -46,11 +48,17 @@ class Game {
         if (this.currentPlayer.positions.length === 5) {
             this.tie = true;
             this.resetBoard();
+            console.log('TIE!')
+            return 'TIE';
         } 
     }
 
     choosePosition(indexNumber) {
-        this.board.splice(indexNumber, 1, "")
-        this.currentPlayer.positions.push(indexNumber);
+        if (this.board[indexNumber] === "") {
+            return
+        } else {
+            this.board.splice(indexNumber, 1, "")
+            this.currentPlayer.positions.unshift(indexNumber);
+        }
     }
 }
