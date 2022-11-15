@@ -70,9 +70,9 @@ function timer() {
     setTimeout(function() {
         clearBoard();
         startGame()
-    }, 4000);
+    }, 3000);
 }
 
-function disableBoard(param) {
-    board.classList[param]('disable');
+function disableBoard(method) {
+    board.classList[method]('disable');
 }

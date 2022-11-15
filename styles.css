@@ -9,12 +9,12 @@ body {
     display: flex;
     justify-content: space-between;
     min-height: 100vh;
-    
 }
 
 .left-section, .right-section {
     align-items: center;
-    background-color: gold;
+    background-image: url("/assets/Screen Shot 2022-11-15 at 4.28.31 PM.png");
+    background-size: cover;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -33,14 +33,18 @@ body {
     font-size: 100px;
 }
 
+h1, h2 {
+    background-color: white;
+    border: 5px solid black;
+    border-radius: 10px;
+    font-size: xx-large;
+    padding: 7px;
+}
+
 .middle-section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-}
-
-.whos-turn {
-    font-size: xx-large;
 }
 
 .game-board {
@@ -51,12 +55,13 @@ body {
 }
 
 button {
-    height: 148px;
-    width: 145px;
     background-color: transparent;
     border-color: black;
     border-style: solid;
     border-width: medium;
+    font-size: xx-large;
+    height: 148px;
+    width: 145px;
 }
 
 .top-left-button {
