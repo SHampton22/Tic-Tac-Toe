@@ -47,8 +47,10 @@ body {
 }
 
 .game-board {
-    height: 450px;
-    width: 450px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 430px;
+    width: 430px;
 }
 
 button {
