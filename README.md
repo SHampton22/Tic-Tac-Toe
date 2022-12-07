@@ -1,4 +1,4 @@
-# Tic-Tac-Toe-FInal-Project
+# Tic-Tac-Toe
 ## Abstract:
 - This app allows users to play a game of tic tac toe either against themselves or another player. 
 ## Installation Instructions:
